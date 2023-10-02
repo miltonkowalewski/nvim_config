@@ -1,0 +1,5 @@
+python-lsp-server[all]
+python-lsp-isort
+pylsp-mypy
+python-lsp-black
+
