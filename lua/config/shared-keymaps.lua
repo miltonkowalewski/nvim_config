@@ -38,7 +38,8 @@ vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buff
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
-vim.keymap.set({ "n", "x" }, "*", "*Nz.", { desc = "Search word under cursor" })
+vim.keymap.set({ "n", "x" }, "*", ":lua vim.lsp.buf.clear_references()<cr>:lua vim.lsp.buf.document_highlight()<cr>viw", { desc = "Search word under cursor" })
+vim.keymap.set({ "n", "x" }, "<2-LeftMouse>", ":lua vim.lsp.buf.clear_references()<cr>:lua vim.lsp.buf.document_highlight()<cr>viw", { desc="Search word under pointer" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })

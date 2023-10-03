@@ -85,15 +85,15 @@ M.lazy =
     -- open automatically
     dap.listeners.after.event_initialized["dapui_config"] = function()
       -- dapui.open()
-      dapui.toggle({ layout = 2 })
+      dapui.open({ layout = 2 })
     end
     -- close automatically
     dap.listeners.before.event_terminated["dapui_config"] = function()
-      dapui.close()
+      -- dapui.close()
     end
     -- close automatically
     dap.listeners.before.event_exited["dapui_config"] = function()
-      dapui.close()
+      -- dapui.close()
     end
     dapui.setup(opts)
   end,
@@ -114,7 +114,6 @@ M.lazy =
     { "<leader>du", mode = { "n" }, function() require("dapui").toggle() end, desc = "Debugger UI" },
     { "<leader>dv", mode = { "n" }, function() require("dapui").toggle({ layout = 1 }) end, desc = "Debugger UI Side Panel" },
     { "<leader>db", mode = { "n" }, function() require("dapui").toggle({ layout = 2 }) end, desc = "Debugger UI Bottom Panel" },
-    { "<leader>dc", mode = { "n" }, function() require("dapui").close() end, desc = "Debugger UI Close" },
   }
 }
 

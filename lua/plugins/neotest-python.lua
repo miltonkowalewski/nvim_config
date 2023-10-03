@@ -29,7 +29,7 @@ local function pytest_adapter_setup()
       justmycode = false,
       -- console = "integratedterminal",
     },
-    args = { "--log-level", "debug", "--quiet" },
+    args = { "--log-level", "DEBUG" },
     runner = "pytest",
   }
 end
@@ -43,7 +43,7 @@ local function unittest_adapter_setup()
       justmycode = false,
       -- console = "integratedterminal",
     },
-    args = { "--log-level", "debug", "--quiet" },
+    args = { "--log-level", "DEBUG" },
     runner = "pytest",
   }
 end
@@ -55,7 +55,7 @@ local neotest_python_opts = function()
         -- pytest_adapter_setup()
         unittest_adapter_setup()
       ),
-    }
+    },
   }
 end
 
@@ -71,7 +71,13 @@ M.lazy = {
   opts = neotest_python_opts,
   config = function(_, opts) require("neotest").setup(opts) end,
   keys = {
-    { "<leader>tF", mode = { "n" }, function() require('neotest').run.run({strategy = 'dap'}) end, desc = "Debug Test Function DAP" },
+    { "<leader>tF", mode = { "n" }, function()
+      require('neotest').run.run({strategy = 'dap'})
+      local has_dap_ui, dapui = pcall(require, "dapui")
+      if has_dap_ui then
+        dapui.open({ layout = 2 })
+      end
+    end, desc = "Debug Test Function DAP" },
     { "<leader>tC", mode = { "n" }, function() require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'}) end, desc = "Debug Test Class DAP" },
     { "<leader>tf", mode = { "n" }, function() require('neotest').run.run() end, desc = "Test Function" },
     { "<leader>tc", mode = { "n" }, function() require('neotest').run.run({vim.fn.expand('%')}) end, desc = "Test Class" },

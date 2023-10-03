@@ -11,7 +11,7 @@ local wk_register = {
     ["<leader>l"] = { name = "Lsp actions" },
     ["<leader>t"] = { name = "Test" },
     ["<leader>w"] = { name = "Nvim Windows" },
-    ["<leader>G"] = { name = "Git" },
+    ["<leader>g"] = { name = "Git" },
     ["<leader>z"] = { name = "Zen Mode" },
     ["<leader>0"] = { name = "*" },
     ["<leader>q"] = { name = "Quickfix list" },
