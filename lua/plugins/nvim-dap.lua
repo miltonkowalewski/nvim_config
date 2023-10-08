@@ -2,8 +2,10 @@ local M = {}
 
 local function dap_config_parse(config)
   local configs = {}
-  for _, conf in ipairs(config.configurations) do
-    table.insert(configs, conf)
+  if config then
+    for _, conf in ipairs(config.configurations) do
+      table.insert(configs, conf)
+    end
   end
   return configs
 end
@@ -32,6 +34,14 @@ local function load_dap_config(config_file_name)
     return dap_config_parse(config)
   end
 
+  local has_lua2json, lua2json = pcall(require, "lua2json")
+  if has_lua2json then
+    -- Parse the JSON into a Lua table
+    local config = lua2json.decode(json_text)
+    return dap_config_parse(config)
+  end
+
+  print("cjson, dkjson or lua2json not found to parse dap config in " .. config_file_name)
   return dap_config_parse()
 end
 
