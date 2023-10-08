@@ -69,6 +69,7 @@ local default_plugins = {
   require("plugins.treesitter-context").lazy,
   require("plugins.diffview").lazy,
   require("plugins.neogen").lazy,
+  require("plugins.gen").lazy,
   -- [[ Themes ]]
   theme.lazy,
   -- [[ End plugins here ]]
