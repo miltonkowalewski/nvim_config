@@ -11,7 +11,7 @@ M.lazy =
   keys = {
     { "<leader>sd", function ()
       require('neogen').generate()
-    end, desc = "Neogen Doc Func, Class, Type, File" },
+    end, desc = "Neogen Generate Doc Func, Class, Type, File" },
   }
 }
 

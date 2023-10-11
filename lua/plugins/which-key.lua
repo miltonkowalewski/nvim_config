@@ -15,6 +15,7 @@ local wk_register = {
     ["<leader>z"] = { name = "Zen Mode" },
     ["<leader>0"] = { name = "*" },
     ["<leader>q"] = { name = "Quickfix list" },
+    ["<leader>s"] = { name = "Snippets" },
       ["<leader>0d"] = { name = "Dooku (Doc Gen)" },
       ["<leader>0m"] = { name = "Markdown" },
       ["<leader>0s"] = { name = "Sessions (Session State Manager)" },

@@ -3,7 +3,7 @@ local M = {}
 M.lazy = {
   "David-Kunz/gen.nvim",
   keys = {
-    { "<leader>G", mode = { "n", "x" }, ":Gen<CR>", desc = "Gen" },
+    { "<leader>G", mode = { "n", "x" }, ":Gen<CR>", desc = "Gen AI+" },
   },
   config = function (_, opts)
     -- require('gen').model = 'mistal:instruct'

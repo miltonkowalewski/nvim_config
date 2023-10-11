@@ -70,6 +70,7 @@ local default_plugins = {
   require("plugins.diffview").lazy,
   require("plugins.neogen").lazy,
   require("plugins.gen").lazy,
+  require("plugins.transparent").lazy,
   -- [[ Themes ]]
   theme.lazy,
   -- [[ End plugins here ]]
