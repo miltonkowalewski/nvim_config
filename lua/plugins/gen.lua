@@ -23,7 +23,7 @@ M.lazy = {
         },
       Generate_Google_Docstring =
         {
-          prompt = "Generate a PT-BR Google Docstring for the following source code ```$filetype\n...\n```:\n```$filetype\n$text\n```",
+          prompt = "Generate a PT-BR Google Docstring in ```$filetype\n...\n``` format for the following source code:\n```$filetype\n$text\n```",
           replace = true,
           extract = "```$filetype\n(.-)```"
         }
