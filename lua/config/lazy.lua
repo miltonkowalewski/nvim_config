@@ -69,8 +69,11 @@ local default_plugins = {
   require("plugins.treesitter-context").lazy,
   require("plugins.diffview").lazy,
   require("plugins.neogen").lazy,
-  require("plugins.gen").lazy,
+  require("plugins.ai-gen").lazy,
   require("plugins.transparent").lazy,
+  require("plugins.theme-night-owl").lazy,
+  require("plugins.tabline-bufferline").lazy,
+  require("plugins.ai-codeium").lazy,
   -- [[ Themes ]]
   theme.lazy,
   -- [[ End plugins here ]]

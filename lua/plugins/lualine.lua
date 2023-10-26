@@ -34,7 +34,7 @@ M.lazy = {
         lualine_c = {
           {'filename', file_status = true, path = 1 },
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'encoding', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },

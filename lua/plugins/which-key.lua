@@ -13,14 +13,16 @@ local wk_register = {
     ["<leader>w"] = { name = "Nvim Windows" },
     ["<leader>g"] = { name = "Git" },
     ["<leader>z"] = { name = "Zen Mode" },
-    ["<leader>0"] = { name = "*" },
     ["<leader>q"] = { name = "Quickfix list" },
     ["<leader>s"] = { name = "Snippets" },
+    ["<leader>0"] = { name = "*" },
       ["<leader>0d"] = { name = "Dooku (Doc Gen)" },
       ["<leader>0m"] = { name = "Markdown" },
       ["<leader>0s"] = { name = "Sessions (Session State Manager)" },
       ["<leader>0o"] = { name = "Overseer (Task Runner)" },
       ["<leader>0h"] = { name = "Hardtime (Nvim best practices)" },
+      ["<leader>0c"] = { name = "Codeium" },
+    ["<leader>1"] = { name = "Toggle" },
     ["gp"] = { name = "gPreview" },
   }
 }
