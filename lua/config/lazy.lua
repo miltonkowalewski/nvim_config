@@ -12,68 +12,74 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local function is_work_environment()
+  local workEnvironmentPath = vim.fn.getenv("WORK_ENVIRONMENT_PATH")
+  if type(workEnvironmentPath) == "string" then
+    local modifiedValue = string.gsub(workEnvironmentPath, "~", "")
+    if string.find(vim.fn.getcwd(), modifiedValue) then
+      return true
+    end
+  end
+  return false
+end
+
+WORK_ENVIRONMENT = is_work_environment()
+
 -- [[ import theme ]]
 local theme =
--- require("plugins.theme-miasma")
--- require("plugins.theme-kanagawa")
--- require("plugins.theme-ronny")
-require("plugins.theme-oxocarbon")
+-- require("plugins.theme_miasma")
+-- require("plugins.theme_kanagawa")
+-- require("plugins.theme_ronny")
+require("plugins.theme_night-owl")
 
 local default_plugins = {
-  require("plugins.plenary").lazy,
-  require("plugins.devicons").lazy,
-  require("plugins.treesitter").lazy,
-  require("plugins.gitsigns").lazy,
-  require("plugins.lspconfig").lazy,
-  require("plugins.mason-lspconfig").lazy,
-  require("plugins.mason").lazy,
-  require("plugins.cmp").lazy,
-  require("plugins.nvimtree").lazy,
-  require("plugins.telescope").lazy,
-  require("plugins.which-key").lazy,
-  require("plugins.trouble").lazy,
-  require("plugins.hop").lazy,
-  -- require("plugins.nvim-dap-python").lazy,
-  require("plugins.nvim-dap").lazy,
-  require("plugins.nvim-dap-ui").lazy,
-  require("plugins.nvim-dap-virtual-text").lazy,
-  require("plugins.goto-preview").lazy,
-  -- require("plugins.chatgpt").lazy,
-  require("plugins.todo-comments").lazy,
-  require("plugins.neotest-python").lazy,
-  require("plugins.comment").lazy,
-  require("plugins.mini").lazy,
-  require("plugins.lualine").lazy,
-  require("plugins.toggleterm").lazy,
-  require("plugins.rnvimr").lazy,
-  require("plugins.stickbuf").lazy,
-  require("plugins.nvim-window-picker").lazy,
-  -- require("plugins.neotree").lazy,
-  require("plugins.neovim-session-manager").lazy,
-  require("plugins.suda").lazy,
-  -- require("plugins.simplyfold").lazy,
-  require("plugins.formatonsave").lazy,
-  require("plugins.nvim-scrollbar").lazy,
-  require("plugins.dressing").lazy,
-  require("plugins.vim-fugitive").lazy,
-  require("plugins.dooku").lazy,
-  require("plugins.markdown-preview").lazy,
-  require("plugins.overseer").lazy,
-  -- require("plugins.neural-chatgpt").lazy,
-  require("plugins.nvim-coverage").lazy,
-  require("plugins.twilight").lazy,
-  require("plugins.markmap").lazy,
-  require("plugins.winshift").lazy,
-  require("plugins.hardtime").lazy,
-  require("plugins.wilder").lazy,
-  require("plugins.treesitter-context").lazy,
-  require("plugins.diffview").lazy,
-  require("plugins.neogen").lazy,
-  require("plugins.ai-gen").lazy,
-  require("plugins.transparent").lazy,
-  require("plugins.theme-night-owl").lazy,
-  require("plugins.tabline-bufferline").lazy,
-  require("plugins.ai-codeium").lazy,
+  require("plugins.comment_comment").lazy,
+  require("plugins.comment_todo-comments").lazy,
+  require("plugins.completition_cmp").lazy,
+  require("plugins.dap_nvim-dap-ui").lazy,
+  require("plugins.dap_nvim-dap-virtual-text").lazy,
+  require("plugins.dap_nvim-dap").lazy,
+  require("plugins.diagnostics_trouble").lazy,
+  require("plugins.documentation_dooku").lazy,
+  require("plugins.explorer_mini-files").lazy,
+  require("plugins.explorer_nvimtree").lazy,
+  require("plugins.finder_telescope").lazy,
+  require("plugins.finder_wilder").lazy,
+  require("plugins.format_format-on-save").lazy,
+  require("plugins.git_diffview").lazy,
+  require("plugins.git_gitsigns").lazy,
+  require("plugins.git_vim-fugitive").lazy,
+  require("plugins.icons_devicons").lazy,
+  require("plugins.llm_codeium").lazy,
+  require("plugins.lsp_goto-preview").lazy,
+  require("plugins.lsp_lspconfig").lazy,
+  require("plugins.motion_hop").lazy,
+  require("plugins.motion_nvim-window-picker").lazy,
+  require("plugins.pck_manager_mason-lspconfig").lazy,
+  require("plugins.pck_manager_mason").lazy,
+  require("plugins.pck_manager_mini").lazy,
+  require("plugins.preview_headlines").lazy,
+  require("plugins.preview_markdown-preview").lazy,
+  require("plugins.session_neovim-session-manager").lazy,
+  require("plugins.statusline_bufferline").lazy,
+  require("plugins.statusline_lualine").lazy,
+  require("plugins.surround_mini-surround").lazy,
+  require("plugins.symbols_aerial").lazy,
+  require("plugins.syntax-semshi").lazy,
+  require("plugins.syntax_treesitter").lazy,
+  require("plugins.syntax_twilight").lazy,
+  require("plugins.task_run_overseer").lazy,
+  require("plugins.terminal_toggleterm").lazy,
+  require("plugins.test_neotest-python").lazy,
+  require("plugins.test_nvim-coverage").lazy,
+  require("plugins.tool-plenary").lazy,
+  require("plugins.tool_suda").lazy,
+  require("plugins.tool_treesitter-context").lazy,
+  require("plugins.ui_dressing").lazy,
+  require("plugins.ui_nvim-scrollbar").lazy,
+  require("plugins.ui_stickbuf").lazy,
+  require("plugins.ui_which-key").lazy,
+  require("plugins.window_winshift").lazy,
   -- [[ Themes ]]
   theme.lazy,
   -- [[ End plugins here ]]
