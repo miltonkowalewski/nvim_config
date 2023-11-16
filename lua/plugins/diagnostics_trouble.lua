@@ -1,7 +1,7 @@
 local M = {}
 
 local keys = {
-  { "<leader>D", mode = { "n", "v" }, "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble diagnostics" },
+  { "<leader>D", mode = { "n", "v" }, "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Code Diagnostics" },
 }
 
 M.lazy = {

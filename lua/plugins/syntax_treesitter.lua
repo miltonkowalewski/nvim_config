@@ -6,7 +6,22 @@ M.lazy = {
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",
   opts = {
-    ensure_installed = { "lua", "python", "json", "bash", "yaml", "sql", "regex", "markdown", "markdown_inline" },
+    ensure_installed = {
+      "bash",
+      "json",
+      "json5",
+      "jsonc",
+      "lua",
+      "dockerfile",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "query",
+      "php",
+      "regex",
+      "sql",
+      "yaml",
+    },
     highlight = {
       enable = true,
       use_languagetree = true,

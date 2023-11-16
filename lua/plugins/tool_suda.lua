@@ -4,7 +4,7 @@ M.lazy = {
   "lambdalisue/suda.vim",
   cmd = { "SudaRead", "SudaWrite" },
   keys = {
-    { "<leader><S-s>", ":SudaWrite<CR>", desc = "Suda Write" },
+    { "<leader>+", "<cmd>SudaWrite<cr>", desc = "Write with sudo" },
   }
 }
 

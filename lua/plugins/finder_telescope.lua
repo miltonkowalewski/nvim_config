@@ -34,7 +34,7 @@ local options = function()
         preview_cutoff = 120,
       },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
-      file_ignore_patterns = { "node_modules", ".venv", ".git/" },
+      file_ignore_patterns = { "node_modules", "\\.venv", "\\.git/" }, -- regex type
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
       path_display = { "truncate" },
       winblend = 0,
@@ -62,30 +62,27 @@ local options = function()
       },
     },
     extensions = {
-      undo = {
-        use_delta = true,
-        side_by_side = true,
-        diff_context_lines = 0,
-        entry_format = "󰣜 #$ID, $STAT, $TIME",
-        layout_strategy = "horizontal",
-        layout_config = {
-          preview_width = 0.70,
-        },
-        mappings = {
-          i = {
-            ["<cr>"] = require("telescope-undo.actions").yank_additions,
-            ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-            ["<C-cr>"] = require("telescope-undo.actions").restore,
-          },
-        },
-      },
       fzf = {
         fuzzy = true,                    -- false will only do exact matching
         override_generic_sorter = true,  -- override the generic sorter
         override_file_sorter = true,     -- override the file sorter
         case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
-      }
+      },
+      live_grep_args = {
+        auto_quoting = true, -- enable/disable auto-quoting
+        -- define mappings, e.g.
+        -- mappings = { -- extend mappings
+        --   i = {
+        --     ["<C-k>"] = lga_actions.quote_prompt(),
+        --     ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        --   },
+        -- },
+        -- ... also accepts theme settings, for example:
+        -- theme = "dropdown", -- use dropdown theme
+        -- theme = { }, -- use own theme spec
+        -- layout_config = { mirror=true }, -- mirror preview pane
+      },
     },
   }
 end
@@ -93,20 +90,29 @@ end
 M.lazy = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    {
-      "debugloop/telescope-undo.nvim",
-      cmd = "Telescope",
-    },
     "nvim-treesitter/nvim-treesitter",
+    "nvim-lua/plenary.nvim",
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    "nvim-lua/plenary.nvim"
+    {
+      "nvim-telescope/telescope.nvim",
+      dependencies = {
+        {
+            "nvim-telescope/telescope-live-grep-args.nvim" ,
+            -- This will not install any breaking changes.
+            -- For major updates, this must be adjusted manually.
+            version = "^1.0.0",
+        },
+      },
+      config = function()
+        require("telescope").load_extension("live_grep_args")
+      end
+    },
   },
   cmd = "Telescope",
   opts = options,
   config = function(_, opts)
     require("telescope").setup(opts)
     require('telescope').load_extension('fzf')
-    require("telescope").load_extension("undo")
   end,
   keys = {
     {"<leader>fc", mode = { "n", "v" }, "<cmd>Telescope git_branches<cr>", desc="Find Checkout Branch" },
@@ -119,7 +125,7 @@ M.lazy = {
     {"<leader>fb", mode = { "n", "v" }, function()
       require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })
     end, desc="Find Opened Buffers" },
-    {"<leader>fg", mode = { "n", "v" }, "<cmd>Telescope live_grep hidden=true<cr>", desc="Find by Grep" },
+    {"<leader>fg", mode = { "n", "v" }, "<cmd>:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc="Find by Grep" },
     {"<leader>fM", mode = { "n", "v" }, "<cmd>Telescope man_pages<cr>", desc="Find Man Pages" },
     {"<leader>fk", mode = { "n", "v" }, "<cmd>Telescope keymaps<cr>", desc="Find Keymaps" },
     {"<leader>fp", mode = { "n", "v" }, "<cmd>Telescope projects<cr>", desc="Find Projects" },

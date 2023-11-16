@@ -11,4 +11,8 @@ M.lazy = {
   end,
 }
 
+M.load = function ()
+  vim.cmd.colorscheme("night-owl")
+end
+
 return M

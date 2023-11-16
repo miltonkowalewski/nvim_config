@@ -16,9 +16,9 @@ local options = function()
       update_root = true,
     },
     view = {
-      adaptive_size = false,
+      adaptive_size = true,
       side = "left",
-      width = 30,
+      -- width = 30,
       preserve_window_proportions = true,
     },
     git = {
@@ -85,7 +85,7 @@ local options = function()
 end
 
 local keys = {
-  { "<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
+  { "<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "File Explorer" },
 }
 
 M.lazy = {

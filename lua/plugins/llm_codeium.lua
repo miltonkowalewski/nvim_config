@@ -4,6 +4,7 @@ M.lazy = {
 -- https://github.com/Exafunction/codeium.vim
   "Exafunction/codeium.vim",
   event = 'BufEnter',
+  cond = not WORK_ENVIRONMENT,
   init = function()
     vim.g.codeium_disable_bindings = 1
     vim.g.codeium_no_map_tab = 1

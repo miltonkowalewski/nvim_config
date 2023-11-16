@@ -2,7 +2,7 @@ local M = {}
 
 local cmp_config = function(_)
   local cmp = require("cmp")
-
+  local defaults = require("cmp.config.default")()
   -- dap config
   local dap_source = {}
   local dap_filetype = {}
@@ -84,9 +84,8 @@ local cmp_config = function(_)
 
   cmp.setup({
     completion = {
-      completeopt = "menu,menuone",
+      completeopt = "menu,menuone,noinsert",
     },
-
     window = {
       completion = {
         side_padding = 0,
@@ -159,7 +158,8 @@ local cmp_config = function(_)
       dap_source,
     }, {
       { name = "buffer" },
-    })
+    }),
+    sorting = defaults.sorting,
   })
 end
 

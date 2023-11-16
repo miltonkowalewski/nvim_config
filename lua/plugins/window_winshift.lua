@@ -67,7 +67,7 @@ M.lazy =
     require("winshift").setup(opts)
   end,
   keys = {
-    { "<leader><S-w>", mode = { "n", "v" }, ":WinShift<cr>", desc = "WinShift" },
+    { "<leader><S-w>", mode = { "n", "v" }, ":WinShift<cr>", desc = "Window Shift" },
   }
 }
 

@@ -2,6 +2,7 @@ local M = {}
 
 M.lazy = {
   "David-Kunz/gen.nvim",
+  cond = not WORK_ENVIRONMENT,
   keys = {
     { "<leader>G", mode = { "n", "x" }, ":Gen<CR>", desc = "Gen AI+" },
   },

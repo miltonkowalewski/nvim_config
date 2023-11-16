@@ -22,7 +22,7 @@ local wk_register = {
       ["<leader>0o"] = { name = "Overseer (Task Runner)" },
       ["<leader>0h"] = { name = "Hardtime (Nvim best practices)" },
       ["<leader>0c"] = { name = "Codeium" },
-    ["<leader>1"] = { name = "Toggle" },
+    ["<leader>1"] = { name = "Nvim Toggle" },
     ["gp"] = { name = "gPreview" },
   }
 }

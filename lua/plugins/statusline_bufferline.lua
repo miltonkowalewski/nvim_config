@@ -102,10 +102,30 @@ M.lazy = {
             delay = 200,
             reveal = {'close'}
         },
-        sort_by = 'insert_after_current', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+        -- sort_by = 'insert_after_current', -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
         --     -- add custom logic
         --     return buffer_a.modified > buffer_b.modified
         -- end
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "NvimTree File Explorer",
+                highlight = "Directory",
+                text_align = "left",
+            },
+            {
+                filetype = "aerial",
+                text = "Symbol Explorer",
+                highlight = "Directory",
+                text_align = "left",
+            },
+            {
+                filetype = "DiffviewFileHistory",
+                text = "Diff View",
+                highlight = "Directory",
+                text_align = "left",
+            },
+        }
       },
     })
   end,

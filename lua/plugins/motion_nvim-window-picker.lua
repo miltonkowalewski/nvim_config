@@ -8,10 +8,13 @@ M.lazy = {
   event = 'VeryLazy',
   version = '2.*',
   config = function()
-    require'window-picker'.setup()
+    require'window-picker'.setup({
+      selection_chars = 'sadrftcv',
+      show_prompt = false,
+    })
   end,
   keys = {
-    { "<S-w>", mode = { "n", "x", "o" },
+    { "<leader>P", mode = { "n", "x", "o" },
       function()
         local picked_window_id = require('window-picker').pick_window({
           hint = 'floating-big-letter'
@@ -23,3 +26,4 @@ M.lazy = {
   },
 }
 return M
+

@@ -9,6 +9,8 @@ local mason_opts = function()
       "mypy",
       "ruff-lsp",
       "pyright",
+      "markdownlint",
+      "marksman",
     },
 
     PATH = "prepend",
