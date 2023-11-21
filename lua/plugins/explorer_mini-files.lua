@@ -46,6 +46,13 @@ M.lazy =
       end,
       desc = "Open mini.files (cwd)",
     },
+    {
+      "<leader>E",
+      function()
+        require("mini.files").open(vim.fn.getcwd(), true)
+      end,
+      desc = "Open mini.files (cwd)",
+    },
   },
   config = function(_, opts)
     require("mini.files").setup(opts)

@@ -85,7 +85,7 @@ local options = function()
 end
 
 local keys = {
-  { "<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "File Explorer" },
+  { "<leader>et", "<cmd>NvimTreeToggle<cr>", desc = "File Explorer" },
 }
 
 M.lazy = {

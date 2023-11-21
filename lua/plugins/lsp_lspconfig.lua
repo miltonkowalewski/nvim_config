@@ -3,7 +3,6 @@ local serverconfig = {}
 
 local function lsp_appearance_load()
   local signs = {
-    -- change the "?" to an icon that you like
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
     { name = "DiagnosticSignHint", text = "󰌶" },
@@ -163,6 +162,7 @@ M.lazy = {
     if has_cmp_nvim_lsp then
       serverconfig.capabilities = cmp_nvim_lsp.default_capabilities(serverconfig.capabilities)
     end
+
     serverconfig.capabilities.textDocument.completion.completionItem = {
       documentationFormat = { "markdown", "plaintext" },
       snippetSupport = true,

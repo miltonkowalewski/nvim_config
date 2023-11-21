@@ -218,15 +218,15 @@ M.lazy = {
       end,
     },
     -- cmp sources plugins
-    {
-      "ray-x/lsp_signature.nvim",
-      event = "VeryLazy",
-      opts = {
-        border = "rouded",
-        hint_prefix = "👉 ",
-      },
-      config = function(_, opts) require'lsp_signature'.setup(opts) end
-    },
+    -- {
+    --   "ray-x/lsp_signature.nvim",
+    --   event = "VeryLazy",
+    --   opts = {
+    --     border = "rouded",
+    --     hint_prefix = "👉 ",
+    --   },
+    --   config = function(_, opts) require'lsp_signature'.setup(opts) end
+    -- },
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
