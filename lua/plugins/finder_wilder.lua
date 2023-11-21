@@ -7,7 +7,7 @@ M.lazy =
     'romgrk/fzy-lua-native',
   },
   'gelguy/wilder.nvim',
-  event = 'VeryLazy',
+  event = 'CmdlineEnter',
   opts = {
     -- https://github.com/gelguy/wilder.nvim#lua-config-experimental
     -- NOTE: For every wilder#foo() method, the wilder Lua module exposes a wilder.foo() method in Lua. All function arguments are the same and only needs to be translated to the Lua equivalent.

@@ -53,6 +53,7 @@ local default_plugins = {
   require("plugins.llm_codeium").lazy,
   require("plugins.lsp_goto-preview").lazy,
   require("plugins.lsp_lspconfig").lazy,
+  require("plugins.lsp_nvim-lint").lazy,
   require("plugins.motion_hop").lazy,
   require("plugins.motion_nvim-window-picker").lazy,
   require("plugins.pck_manager_mason-lspconfig").lazy,
@@ -65,16 +66,16 @@ local default_plugins = {
   require("plugins.statusline_lualine").lazy,
   require("plugins.surround_mini-surround").lazy,
   require("plugins.symbols_aerial").lazy,
-  require("plugins.syntax-semshi").lazy,
   require("plugins.syntax_treesitter").lazy,
   require("plugins.syntax_twilight").lazy,
   require("plugins.task_run_overseer").lazy,
   require("plugins.terminal_toggleterm").lazy,
   require("plugins.test_neotest-python").lazy,
   require("plugins.test_nvim-coverage").lazy,
-  require("plugins.tool-plenary").lazy,
+  require("plugins.tool_plenary").lazy,
   require("plugins.tool_suda").lazy,
   require("plugins.tool_treesitter-context").lazy,
+  require("plugins.tools_ssr").lazy,
   require("plugins.ui_dressing").lazy,
   require("plugins.ui_nvim-scrollbar").lazy,
   require("plugins.ui_stickbuf").lazy,
@@ -96,6 +97,9 @@ require("lazy").setup(default_plugins, {
     },
   },
   performance = {
+    cache = {
+      enabled = true,
+    },
     rtp = {
       disabled_plugins = {
         "2html_plugin",

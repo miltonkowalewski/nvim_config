@@ -186,12 +186,12 @@ M.lazy = {
     -- [[ add Mason installed server setup here like pyright and lua_ls, I prefer not automatic setup ]]
     lua_ls_setup()
     pyright_setup()
-    ruff_lsp()
+    -- ruff_lsp()
   end,
   keys = {
     { "gd", mode = {"n"}, vim.lsp.buf.definition, desc="Lsp Goto Definition" },
-    { "gxd", mode = {"n"}, ":rightbelow split | lua vim.lsp.buf.definition()<CR>", desc="Lsp Horizontal Split Goto Definition" },
-    { "gvd", mode = {"n"}, ":rightbelow vsplit | lua vim.lsp.buf.definition()<CR>", desc="Lsp Vertical Split Goto Definition" },
+    { "gX", mode = {"n"}, ":rightbelow split | lua vim.lsp.buf.definition()<CR>", desc="Lsp Horizontal Split Goto Definition" },
+    { "gV", mode = {"n"}, ":rightbelow vsplit | lua vim.lsp.buf.definition()<CR>", desc="Lsp Vertical Split Goto Definition" },
     { "K", mode = {"n"}, vim.lsp.buf.hover, desc="Lsp Hover" },
     { "<leader>lr", mode = {"n"}, vim.lsp.buf.rename, desc="Lsp Rename" },
     { "<leader>lf", mode = {"n", "v"}, function() vim.lsp.buf.format { async = true } end, desc="Lsp Format" },

@@ -33,14 +33,14 @@ M.lazy =
   },
   keys = {
     {
-      "<leader>md",
+      "<leader>ed",
       function()
         require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
       end,
       desc = "Open mini.files (directory of current file)",
     },
     {
-      "<leader>mr",
+      "<leader>er",
       function()
         require("mini.files").open(vim.fn.getcwd(), true)
       end,

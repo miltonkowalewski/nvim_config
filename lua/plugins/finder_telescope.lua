@@ -94,25 +94,18 @@ M.lazy = {
     "nvim-lua/plenary.nvim",
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     {
-      "nvim-telescope/telescope.nvim",
-      dependencies = {
-        {
-            "nvim-telescope/telescope-live-grep-args.nvim" ,
-            -- This will not install any breaking changes.
-            -- For major updates, this must be adjusted manually.
-            version = "^1.0.0",
-        },
-      },
-      config = function()
-        require("telescope").load_extension("live_grep_args")
-      end
+      "nvim-telescope/telescope-live-grep-args.nvim" ,
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.0.0",
     },
   },
   cmd = "Telescope",
   opts = options,
   config = function(_, opts)
-    require("telescope").setup(opts)
+    require("telescope").load_extension("live_grep_args")
     require('telescope').load_extension('fzf')
+    require("telescope").setup(opts)
   end,
   keys = {
     {"<leader>fc", mode = { "n", "v" }, "<cmd>Telescope git_branches<cr>", desc="Find Checkout Branch" },
@@ -138,15 +131,12 @@ M.lazy = {
         sorting_strategy = "ascending",
       })
     end, desc="Find in File" },
-    {"<C-g>", mode = { "n", "v" }, function()
-      local current_word = vim.fn.expand('<cword>')
-      require('telescope.builtin').live_grep({
-        use_regex=true,
-        default_text = current_word,
-        ctags_file="./tags",
-        sorting_strategy = "ascending",
-      })
-    end, desc="Find in Project" },
+    {"<C-g>", mode = { "n" }, function()
+      require("telescope-live-grep-args.shortcuts").grep_word_under_cursor({quote = true, trim = true})
+    end, desc="Find in Project (normal)" },
+    {"<C-g>", mode = { "v" }, function()
+      require("telescope-live-grep-args.shortcuts").grep_visual_selection({quote = true, trim = true})
+    end, desc="Find in Project (visual)" },
   }
 }
 

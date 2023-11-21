@@ -7,6 +7,8 @@ local keys = {
   { "S", mode = { "n", "o", "x" }, function() require("hop").hint_patterns({ keys = hop_words }) end, desc = "Hop Before" },
   { "t", mode = { "n", "x", "o" }, function() require("hop").hint_words({ current_line_only = true, keys = hop_words }) end, desc = "Hop After" },
   { "T", mode = { "n", "o", "x" }, function() require("hop").hint_words({ current_line_only = true, keys = hop_words }) end, desc = "Hop Before" },
+  { "f", mode = { "n", "x", "o" }, function() require("hop").hint_lines({ keys = hop_words }) end, desc = "Hop Vertical Lines" },
+  { "F", mode = { "n", "o", "x" }, function() require("hop").hint_lines({ keys = hop_words }) end, desc = "Hop Verical Lines" },
 }
 
 -- https://github.com/phaazon/hop.nvim
