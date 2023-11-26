@@ -81,7 +81,7 @@ local options = function()
         -- ... also accepts theme settings, for example:
         -- theme = "dropdown", -- use dropdown theme
         -- theme = { }, -- use own theme spec
-        -- layout_config = { mirror=true }, -- mirror preview pane
+        layout_config = { mirror=true }, -- mirror preview pane
       },
     },
   }

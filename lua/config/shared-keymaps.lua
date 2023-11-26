@@ -42,7 +42,10 @@ vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buff
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Select a word
-vim.keymap.set({ "n", "x" }, "<2-LeftMouse>", ":lua vim.lsp.buf.clear_references()<cr>:lua vim.lsp.buf.document_highlight()<cr>viw", { desc="Search word under pointer" })
+vim.keymap.set({ "n", "x" }, "<2-LeftMouse>", "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>:lua vim.lsp.buf.document_highlight()<cr>viw", { desc="Search word under pointer" })
+
+-- Select all text
+vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" }) -- norm! ggVG
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })

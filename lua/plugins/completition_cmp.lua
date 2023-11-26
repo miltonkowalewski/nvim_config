@@ -66,19 +66,15 @@ local cmp_config = function(_)
   --   }
   -- end
   local function border(hl_name)
-    -- 󰕛 󰢛      󰕛 󰪏 󰟍  󰵅 󰁨 󰉂 󰓬 󱃷 󰒻 󰊾 󱠁  󰝧 󰅽 󰖵 󱨟 󱉱  󰬢 󱃖 a
-    --  󰧑 󰂾    󰦷 󱐋 󰗣    󰠠 󱊒 󰖦  󰃉 󱤌    󰜮 󰜱 󰜴 󰜷 󰗚 󰒔 󰴜 a
-    --  󰭩  󰥙 󱃘  󰣖   󰅏  󱘖 a
     return {
-      { "󱘖", hl_name },
+      { "╭", hl_name },
       { "─", hl_name },
       { "╮", hl_name },
-      { " ", hl_name },
-      { "", hl_name },
-      -- { "┛", hl_name },
+      { "│", hl_name },
+      { "╯", hl_name },
       { "─", hl_name },
       { "╰", hl_name },
-      { " ", hl_name },
+      { "│", hl_name },
     }
   end
 
@@ -91,10 +87,10 @@ local cmp_config = function(_)
         side_padding = 0,
         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         scrollbar = true,
-        border = border "CmpBorder"
+        border = border("CmpBorder"),
       },
       documentation = {
-        border = border "CmpDocBorder",
+        border = border("CmpDocBorder"),
         winhighlight = "Normal:NormalFloat",
       },
     },
@@ -126,10 +122,10 @@ local cmp_config = function(_)
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-c>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
+      ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
-      },
+      }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -168,15 +164,15 @@ local luasnip_config = function(opts)
 
   -- vscode format
   require("luasnip.loaders.from_vscode").lazy_load()
-  require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.vscode_snippets_path or "" }
+  require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.g.vscode_snippets_path or "" })
 
   -- snipmate format
   require("luasnip.loaders.from_snipmate").load()
-  require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "" }
+  require("luasnip.loaders.from_snipmate").lazy_load({ paths = vim.g.snipmate_snippets_path or "" })
 
   -- lua format
   require("luasnip.loaders.from_lua").load()
-  require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
+  require("luasnip.loaders.from_lua").lazy_load({ paths = vim.g.lua_snippets_path or "" })
 
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
@@ -199,9 +195,7 @@ M.lazy = {
       "L3MON4D3/LuaSnip",
       dependencies = "rafamadriz/friendly-snippets",
       opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-      config = function(_, opts)
-        luasnip_config(opts)
-      end,
+      config = function(_, opts) luasnip_config(opts) end,
     },
     -- autopairing of (){}[] etc
     {
@@ -213,20 +207,11 @@ M.lazy = {
       config = function(_, opts)
         require("nvim-autopairs").setup(opts)
         -- setup cmp for autopairs
-        local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
       end,
     },
     -- cmp sources plugins
-    -- {
-    --   "ray-x/lsp_signature.nvim",
-    --   event = "VeryLazy",
-    --   opts = {
-    --     border = "rouded",
-    --     hint_prefix = "👉 ",
-    --   },
-    --   config = function(_, opts) require'lsp_signature'.setup(opts) end
-    -- },
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
@@ -236,9 +221,7 @@ M.lazy = {
     "hrsh7th/vim-vsnip",
   },
   opts = {},
-  config = function(_, opts)
-    cmp_config(opts)
-  end,
+  config = function(_, opts) cmp_config(opts) end,
 }
 
 return M

@@ -56,7 +56,7 @@ M.lazy =
           ["<CR>"] = "Confirm",
         },
         i = {
-          ["<C-c>"] = "Close",
+          ["<Esc>"] = "Close",
           ["<CR>"] = "Confirm",
           ["<Up>"] = "HistoryPrev",
           ["<Down>"] = "HistoryNext",
@@ -152,7 +152,6 @@ M.lazy =
         -- Set to `false` to disable
         mappings = {
           ["<Esc>"] = "Close",
-          ["<C-c>"] = "Close",
           ["<CR>"] = "Confirm",
         },
 
