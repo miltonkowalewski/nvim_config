@@ -43,11 +43,22 @@ end
 
 local function pyright_setup()
   local util = require("lspconfig/util")
-
   local project_root = util.find_git_ancestor(vim.fn.getcwd()) or vim.fn.getcwd()
 
   require("lspconfig").pyright.setup({
+    -- https://microsoft.github.io/pyright/#/settings?id=pyright-settings
     before_init = function(_, config) config.settings.python.pythonPath = get_python_path(config.root_dir) end,
+    settings = {
+      python = {
+        disableOrganizeImports = true,
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          typeCheckingMode = "off",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
     on_attach = serverconfig.on_attach,
     capabilities = serverconfig.capabilities,
     on_new_config = function(new_config, new_root_dir) new_config.cmd_cwd = new_root_dir end,
@@ -63,13 +74,14 @@ local function ruff_lsp()
   local project_root = util.find_git_ancestor(vim.fn.getcwd()) or vim.fn.getcwd()
 
   require("lspconfig").ruff_lsp.setup({
+    -- https://github.com/astral-sh/ruff-lsp#example-neovim
     init_options = {
       settings = {
         -- Any extra CLI arguments for `ruff` go here.
         args = {},
       },
     },
-    on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+    on_attach = serverconfig.on_attach,
     capabilities = serverconfig.capabilities,
     filetypes = { "python" },
     single_file_support = true,
@@ -121,6 +133,7 @@ local function load_server_config()
   lsp_appearance_load()
 
   serverconfig.on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
@@ -151,7 +164,7 @@ local function load_server_config()
   -- :lua print(vim.inspect(vim.lsp.get_active_clients()))
   -- [[ add Mason installed server setup here like pyright and lua_ls, I prefer not automatic setup ]]
   -- lua_ls_setup()
-  -- pyright_setup()
+  pyright_setup()
   -- ruff_lsp()
 end
 

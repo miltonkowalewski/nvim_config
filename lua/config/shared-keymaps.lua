@@ -39,10 +39,20 @@ vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set(
+  { "i", "n" },
+  "<esc>",
+  "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>noh<cr><esc>",
+  { desc = "Escape and clear hlsearch" }
+)
 
 -- Select a word
-vim.keymap.set({ "n", "x" }, "<2-LeftMouse>", "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>:lua vim.lsp.buf.document_highlight()<cr>viw", { desc="Search word under pointer" })
+vim.keymap.set(
+  { "n", "x" },
+  "<2-LeftMouse>",
+  "<cmd>:lua vim.lsp.buf.clear_references()<cr><cmd>:lua vim.lsp.buf.document_highlight()<cr>viw",
+  { desc = "Search word under pointer" }
+)
 
 -- Select all text
 vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" }) -- norm! ggVG
@@ -64,8 +74,8 @@ vim.keymap.set("i", ";", ";<c-g>u")
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Better indenting
-vim.keymap.set({"n", "v"}, "<", "<gv")
-vim.keymap.set({"n", "v"}, ">", ">gv")
+vim.keymap.set({ "n", "v" }, "<S-tab>", "<gv")
+vim.keymap.set({ "n", "v" }, "<tab>", ">gv")
 
 -- New file
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
@@ -97,3 +107,6 @@ vim.keymap.set("n", "<leader>qr", ":cfdo %s/1/2/gce | update", { desc = "Quickli
 
 -- Toggle
 vim.keymap.set("n", "<leader>1r", ":set relativenumber!<cr>", { desc = "Toggle Relative Number" })
+
+-- Search
+vim.keymap.set("n", "*", "*``", { desc = "Search" })

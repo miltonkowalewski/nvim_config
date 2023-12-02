@@ -5,26 +5,27 @@ local wk_register = {
   telescope = {
     ["<leader>f"] = { name = "Find" },
     ["<leader><tab>"] = { name = "Nvim Tab" },
-    ["<leader>c"] = { name = "Config Shortcut" },
     ["<leader>b"] = { name = "Buffer" },
+    ["<leader>c"] = { name = "Config Shortcut" },
     ["<leader>d"] = { name = "Diagnostics" },
-    ["<leader>l"] = { name = "Lsp actions" },
-    ["<leader>t"] = { name = "Test" },
-    ["<leader>w"] = { name = "Nvim Windows" },
+    ["<leader>e"] = { name = "Explorer" },
     ["<leader>g"] = { name = "Git" },
-    ["<leader>z"] = { name = "Zen Mode" },
+    ["<leader>l"] = { name = "Lsp actions" },
     ["<leader>q"] = { name = "Quickfix list" },
     ["<leader>s"] = { name = "Snippets" },
+    ["<leader>t"] = { name = "Test" },
+    ["<leader>w"] = { name = "Nvim Windows" },
+    ["<leader>z"] = { name = "Zen Mode" },
     ["<leader>0"] = { name = "*" },
-      ["<leader>0d"] = { name = "Dooku (Doc Gen)" },
-      ["<leader>0m"] = { name = "Markdown" },
-      ["<leader>0s"] = { name = "Sessions (Session State Manager)" },
-      ["<leader>0o"] = { name = "Overseer (Task Runner)" },
-      ["<leader>0h"] = { name = "Hardtime (Nvim best practices)" },
-      ["<leader>0c"] = { name = "Codeium" },
+    ["<leader>0d"] = { name = "Dooku (Doc Gen)" },
+    ["<leader>0m"] = { name = "Markdown" },
+    ["<leader>0s"] = { name = "Sessions (Session State Manager)" },
+    ["<leader>0o"] = { name = "Overseer (Task Runner)" },
+    ["<leader>0h"] = { name = "Hardtime (Nvim best practices)" },
+    ["<leader>0c"] = { name = "Codeium" },
     ["<leader>1"] = { name = "Nvim Toggle" },
     ["gp"] = { name = "gPreview" },
-  }
+  },
 }
 
 M.lazy = {
@@ -38,7 +39,7 @@ M.lazy = {
 
   opts = {
     disable = {
-      filetypes = { "TelescopePrompt" } ,
+      filetypes = { "TelescopePrompt" },
     },
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
