@@ -1,7 +1,6 @@
-require("config.options") -- [[ Local Nvim options ]]
-require("config.shared-options") -- [[ Options shared ]]
-require("config.shared-keymaps") -- [[ Keymaps shared ]]
-require("config.keymaps") -- [[ Local Nvim options ]]
-require("config.shared-autocommands") -- [[ Autocommands Shared ]]
+require("config.options") -- [[ Options ]]
+local keymaps = require("config.keymaps") -- [[ Keymaps ]]
+keymaps.vim()
+require("config.autocommands") -- [[ Autocommands ]]
 require("config.lazy") -- [[ Load Lazy ]]
 require("config.color") -- [[ Substitute colorscheme colors ]]

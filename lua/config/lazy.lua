@@ -16,123 +16,93 @@ local function is_work_environment()
   local workEnvironmentPath = vim.fn.getenv("WORK_ENVIRONMENT_PATH")
   if type(workEnvironmentPath) == "string" then
     local modifiedValue = string.gsub(workEnvironmentPath, "~", "")
-    if string.find(vim.fn.getcwd(), modifiedValue) then
-      return true
-    end
+    local cwd = vim.fn.getcwd() or ""
+    if string.find(cwd, modifiedValue) then return true end
   end
   return false
 end
 
 WORK_ENVIRONMENT = is_work_environment()
 
--- [[ import theme ]]
-local theme =
--- require("plugins.theme_miasma")
--- require("plugins.theme_kanagawa")
--- require("plugins.theme_ronny")
-require("plugins.theme_night-owl")
+-- Create LazyFile event to load without blocking ui
+local plugins_tools = require("plugins.config.tools")
+plugins_tools.lazy_file()
 
-local default_plugins = {
-  require("plugins.comment_comment").lazy,
-  require("plugins.comment_todo-comments").lazy,
-  require("plugins.completition_cmp").lazy,
-  require("plugins.dap_nvim-dap-ui").lazy,
-  require("plugins.dap_nvim-dap-virtual-text").lazy,
-  require("plugins.dap_nvim-dap").lazy,
-  require("plugins.diagnostics_trouble").lazy,
-  require("plugins.documentation_dooku").lazy,
-  require("plugins.explorer_mini-files").lazy,
-  require("plugins.explorer_nvimtree").lazy,
-  require("plugins.finder_telescope").lazy,
-  require("plugins.git_diffview").lazy,
-  require("plugins.git_gitsigns").lazy,
-  require("plugins.git_vim-fugitive").lazy,
-  require("plugins.llm_codeium").lazy,
-  require("plugins.lsp_goto-preview").lazy,
-  require("plugins.lsp_guard").lazy,
-  require("plugins.lsp_lspconfig").lazy,
-  require("plugins.lsp_nvim-lint").lazy,
-  require("plugins.motion_hop").lazy,
-  require("plugins.motion_nvim-window-picker").lazy,
-  require("plugins.pck_manager_mason").lazy,
-  require("plugins.pck_manager_mini").lazy,
-  require("plugins.preview_headlines").lazy,
-  require("plugins.preview_markdown-preview").lazy,
-  require("plugins.session_neovim-session-manager").lazy,
-  require("plugins.statusline_bufferline").lazy,
-  require("plugins.statusline_lualine").lazy,
-  require("plugins.surround_mini-surround").lazy,
-  require("plugins.symbols_aerial").lazy,
-  require("plugins.syntax_treesitter").lazy,
-  require("plugins.syntax_twilight").lazy,
-  require("plugins.task_run_overseer").lazy,
-  require("plugins.terminal_toggleterm").lazy,
-  require("plugins.test_neotest-python").lazy,
-  require("plugins.test_nvim-coverage").lazy,
-  require("plugins.tool_plenary").lazy,
-  require("plugins.tool_suda").lazy,
-  require("plugins.tool_treesitter-context").lazy,
-  require("plugins.tools_ssr").lazy,
-  require("plugins.ui_bqf").lazy,
-  require("plugins.ui_devicons").lazy,
-  require("plugins.ui_dressing").lazy,
-  require("plugins.ui_nvim-scrollbar").lazy,
-  require("plugins.ui_shade").lazy,
-  require("plugins.ui_stickbuf").lazy,
-  require("plugins.ui_which-key").lazy,
-  require("plugins.window_winshift").lazy,
-  -- [[ Themes ]]
-  theme.lazy,
-  -- [[ End plugins here ]]
-}
+colorscheme_list = { "vscode", "gruvbox", "kanagawa", "tokyonight", "solarized-osaka" }
 
-require("lazy").setup(default_plugins, {
-  defaults = { lazy = true },
-  ui = {
-    icons = {
-      ft = "",
-      lazy = "󰂠 ",
-      loaded = "",
-      not_loaded = "",
-    },
+local colorscheme = require("core.lua_tools").getRandomValue(colorscheme_list)
+require("lazy").setup({
+  spec = {
+    -- coding
+    { import = "plugins.coding.codeium" },
+    { import = "plugins.coding.comment" },
+    { import = "plugins.coding.luasnip" },
+    { import = "plugins.coding.nvim-cmp" },
+    -- dap
+    { import = "plugins.dap.nvim-dap" },
+    -- { import = "plugins.dap.nvim-dap-virtual-text" },
+    { import = "plugins.dap.neotest-python" },
+    -- colorscheme
+    { import = "plugins.colorscheme." .. colorscheme },
+    -- editor
+    { import = "plugins.editor.neo-tree" },
+    { import = "plugins.editor.telescope" },
+    { import = "plugins.editor.flash" },
+    { import = "plugins.editor.which-key" },
+    { import = "plugins.editor.gitsigns" },
+    { import = "plugins.editor.vim-illuminate" },
+    { import = "plugins.editor.trouble" },
+    { import = "plugins.editor.todo-comments" },
+    { import = "plugins.editor.semshi" },
+    { import = "plugins.editor.nvim-treesitter" },
+    { import = "plugins.editor.headlines" },
+    { import = "plugins.editor.zem" },
+    { import = "plugins.editor.persistence" },
+    { import = "plugins.editor.nvim-treesitter-context" },
+    { import = "plugins.editor.nvim-window-picker" },
+    { import = "plugins.editor.aerial" },
+    { import = "plugins.editor.winshift" },
+    -- formatting
+    { import = "plugins.formatting.format-on-save" },
+    -- lsp
+    { import = "plugins.lsp.goto-preview" },
+    { import = "plugins.lsp.nvim-lspconfig" },
+    -- plugin_manager
+    { import = "plugins.plugin-manager.mason" },
+    -- ui
+    { import = "plugins.ui.alpha-nvim" },
+    { import = "plugins.ui.lualine" },
+    { import = "plugins.ui.nvim-bqf" },
+    { import = "plugins.ui.incline" },
+    { import = "plugins.ui.noice" },
   },
+  defaults = {
+    lazy = false,
+    version = false,             -- always use the latest git commit
+  },
+  checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     cache = {
       enabled = true,
+      -- disable_events = {},
     },
     rtp = {
+      -- disable some rtp plugins
       disabled_plugins = {
-        "2html_plugin",
-        "tohtml",
-        "getscript",
-        "getscriptPlugin",
         "gzip",
-        "logipat",
-        "netrw",
+        -- "matchit",
+        -- "matchparen",
         "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "matchit",
-        "tar",
+        -- "rplugin",
         "tarPlugin",
-        "rrhelper",
-        "spellfile_plugin",
-        "vimball",
-        "vimballPlugin",
-        "zip",
-        "zipPlugin",
+        "tohtml",
         "tutor",
-        -- "rplugin", -- Not disabled because `wilder` plugin
-        "syntax",
-        "synmenu",
-        "optwin",
-        "compiler",
-        "bugreport",
-        "ftplugin",
-        "editorconfig",
+        "zipPlugin",
       },
     },
   },
+  debug = false,
 })
 
-theme.load()
+local has_theme, _ = pcall(require, colorscheme)
+if has_theme then vim.cmd("colorscheme " .. colorscheme) end
