@@ -10,7 +10,7 @@ end
 
 -- Define the paths
 local custom_python_path = "~/venvs/neovim/bin/python"
-local default_python_path = "/usr/bin/python3"
+local default_python_path = "~/.pyenv/shims/python3"
 
 -- Check if the custom path exists, if not, set to default
 if file_exists(os.getenv("HOME") .. "/venvs/neovim/bin/python") then
