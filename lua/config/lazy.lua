@@ -28,7 +28,7 @@ WORK_ENVIRONMENT = is_work_environment()
 local plugins_tools = require("plugins.config.tools")
 plugins_tools.lazy_file()
 
-colorscheme_list = { "vscode", "gruvbox", "kanagawa", "tokyonight", "solarized-osaka" }
+colorscheme_list = { "vscode", "gruvbox", "kanagawa", "tokyonight", "solarized-osaka", "matrix", "fluoromachine" }
 
 local colorscheme = require("core.lua_tools").getRandomValue(colorscheme_list)
 require("lazy").setup({
@@ -48,6 +48,7 @@ require("lazy").setup({
     { import = "plugins.editor.neo-tree" },
     { import = "plugins.editor.telescope" },
     { import = "plugins.editor.flash" },
+    { import = "plugins.editor.nvim_context_vt" },
     { import = "plugins.editor.which-key" },
     { import = "plugins.editor.gitsigns" },
     { import = "plugins.editor.vim-illuminate" },

@@ -138,7 +138,8 @@ local function lua_ls_setup()
   })
 end
 
-return {
+return
+{
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile" },
   cmd = { "LspInfo", "LspInstall", "LspUninstall" },
@@ -186,6 +187,16 @@ return {
     require("lspconfig").ruff_lsp.setup({
       on_attach = serverconfig.on_attach,
     })
+    require("lspconfig").lua_ls.setup({
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { 'vim' },
+          },
+        },
+      },
+    })
     require('lspconfig').bashls.setup({})
 
     -- Use LspAttach autocommand to only map the following keys
@@ -198,25 +209,29 @@ return {
 
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'dK', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', 'gX', ":rightbelow split | lua vim.lsp.buf.definition()<CR>", opts)
-        vim.keymap.set('n', "gV", ":rightbelow vsplit | lua vim.lsp.buf.definition()<CR>", opts)
-        --vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        --vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        --vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        --vim.keymap.set('n', '<space>wl', function()
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Go to declaration" })
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc = "Show hover" })
+        vim.keymap.set('n', 'dK', vim.diagnostic.open_float, { buffer = ev.buf, desc = "Show diagnostic" })
+        vim.keymap.set('n', 'gX', ":rightbelow split | lua vim.lsp.buf.definition()<CR>",
+          { buffer = ev.buf, desc = "Open LSP definition in new split" })
+        vim.keymap.set('n', "gV", ":rightbelow vsplit | lua vim.lsp.buf.definition()<CR>",
+          { buffer = ev.buf, desc = "Open LSP definition in new vertical split" })
+        --vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf })
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Show signature help" })
+        --vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf })
+        --vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf })
+        --vim.keymap.set('n', '<leader>wl', function()
         --  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        --end, opts)
-        vim.keymap.set('n', '<space>ld', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<space>lr', vim.lsp.buf.rename, opts)
-        vim.keymap.set({ 'n', 'v' }, '<space>la', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'lr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<space>lf', function() vim.lsp.buf.format { async = true } end, opts)
+        --end, { buffer = ev.buf })
+        vim.keymap.set('n', '<leader>ld', vim.lsp.buf.type_definition,
+          { buffer = ev.buf, desc = "Show type definition" })
+        vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename symbol" })
+        vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action,
+          { buffer = ev.buf, desc = "Show code actions" })
+        vim.keymap.set('n', 'lr', vim.lsp.buf.references, { buffer = ev.buf, desc = "Show references" })
+        vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end,
+          { buffer = ev.buf, desc = "Format document" })
       end,
     })
   end,

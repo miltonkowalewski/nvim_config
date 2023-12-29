@@ -92,8 +92,8 @@ require('lualine').setup {
         sections = { 'warn' },
         diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
       },
-      { 'filename', file_status = false, path = 1 },
-      { modified, color = { bg = colors.red } },
+      { 'filename', file_status = false,        path = 1 },
+      { modified,   color = { bg = colors.red } },
       {
         '%w',
         cond = function()
@@ -116,7 +116,7 @@ require('lualine').setup {
     lualine_c = {},
     lualine_x = {},
     lualine_y = { search_result, 'filetype' },
-    lualine_z = { '%l:%c', '%p%%/%L' },
+    lualine_z = { '%l:%c', '%p%%/%L', function() return " " .. os.date("%R") end },
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },

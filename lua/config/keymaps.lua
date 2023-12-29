@@ -106,10 +106,10 @@ M.vim = function()
   vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
   -- Quicklist
-  vim.keymap.set("n", "<leader>qr", ":cfdo %s/1/2/gce | update", { desc = "Quicklist Replace" })
+  vim.keymap.set("n", "<leader>cr", ":cfdo %s/1/2/gce | update", { desc = "Quicklist Replace" })
 
   -- Toggle
-  vim.keymap.set("n", "<leader>1r", ":set relativenumber!<cr>", { desc = "Toggle Relative Number" })
+  vim.keymap.set("n", "<leader>tr", ":set relativenumber!<cr>", { desc = "Toggle Relative Number" })
 
   -- Search
   vim.keymap.set("n", "*", "*``", { desc = "Search" })
