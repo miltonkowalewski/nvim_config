@@ -2,7 +2,7 @@ math.randomseed(os.time())
 -- Function to get a random value from the list
 local function getRandomValue(list)
   local randomIndex = math.random(1, #list) -- Generate a random index within the range of the list
-  return list[randomIndex] -- Retrieve the value at the random index
+  return list[randomIndex]                  -- Retrieve the value at the random index
 end
 
 return {
@@ -21,27 +21,6 @@ return {
     --        ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
     --   ]]
     local logo_list = {
-      [[
-  .d^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^b.
-  $      `.                                    $
-  $        `.                                .-$
-  $          `.                          .-*'  $
-  $            `.                    .-*'      $
-  $              ;               .-*'          $
-  $      .-'`.   |           .-*'    .         $
-  $     /.'"`.\  |___________;   .-*'|         $
-  $    ::     ;; |           |   |   |         $
-  $    ||     || |           |   |   |         $
-  $    ::     ;; |""""""""""";   | `"|         $
-  $     \`._,'/  |           `*-.|   |         $
-  $      `-..'   ;               `*-.|         $
-  $            .'                    `*-.      $
-  $          .'       .-.                `*-.  $
-  $        .'      ._/   \                   `*$
-  $      .'      .'_/     \_.                  $
-  $. ENERGY 100 /.'/       \ `.      AMMO 320 .$
-  `TssssssssssssssssssssssssssssssssssssssssssP'
-    ]],
       [[
 ⠀⠀⠀⠀⠀⠀⢀⣤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⢤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⢀⡼⠋⠀⣀⠄⡂⠍⣀⣒⣒⠂⠀⠬⠤⠤⠬⠍⠉⠝⠲⣄⡀⠀⠀
@@ -125,20 +104,6 @@ return {
 ⠀⠀⠀⠀⠀⠀⠉⠛⠿⠿⠿⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ]],
       [[
-🔥 Welcome Vault Dwellers! 🔥
-
-🚀 Are you tired of communicating via Pip-Boy's limited functions?
-Introducing "Pigeon Post Apocalypse" - our bold experiment fusing ancient
-pigeon messaging with state-of-the-art pre-war tech! 🐦💻
-
-Join us in revolutionizing post-apocalyptic communication!
-📡 Let's make the impending holocaust a tad more scientific and a whole lot funnier!
-Who needs nukes when we've got pigeons with a mission? 🕊️💣
-
-Let's spread some feathered chaos in the name of science! 🧪🌐
-#PigeonPostApocalypse #VaultTechRevolution 🚀🐦
-    ]],
-      [[
 ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL
 Password Required
 
@@ -161,37 +126,21 @@ Attempts Remaining: █ █ █ █
 0x4FFE <}'=LOYALIST@$&*^##@  0x500E {APICANAIS%#@!^&*()
 0x4FFF [HUMANITY&*!@#%^()]-  0x500F *$#%[SENDER()&!@^*]
     ]],
-      [[
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡶⠶⠛⠛⠛⠛⠻⠶⢶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⣠⡾⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠳⣦⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⡾⠋⢠⠀⠀⠀⠀⠀⠀⣠⠄⠀⠀⠀⠀⠀⠀⠈⠻⣦⠀⠀⠀⠀⠀
-⠀⠀⠀⢠⡿⠁⠀⣸⡦⠾⢦⣤⡴⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀⠀⠀
-⣾⠛⠳⣾⠁⠀⠀⠿⠃⠀⢸⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣇⠀⠀⠀
-⢻⡀⢸⡇⠀⡆⠀⠀⠀⠀⣀⣤⠴⢶⡆⠀⠀⠀⢀⣤⠖⠛⠉⠉⡷⠀⢿⡀⠀⠀
-⠈⢷⣼⠃⠀⣿⠒⣶⢻⡏⣿⡀⠀⣿⡇⠀⠀⠀⠋⠀⠀⠀⢀⡼⠃⠀⢸⡇⠀⠀
-⠀⠈⣿⠀⠀⢹⡀⣿⣾⠿⠛⢷⣸⢣⡇⠀⠀⠀⠀⠀⢀⣴⠟⠁⠀⠀⢸⡇⠀⠀
-⠀⠀⢹⡆⠀⢸⣿⣿⠁⠀⠀⠀⠁⢸⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀
-⠀⠀⠸⣇⠀⠈⢿⡇⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠓⠒⣶
-⠀⠀⠀⢻⡄⠀⠘⣧⠀⠀⠀⠀⣸⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠋
-⠀⠀⠀⠀⠻⣆⠀⠈⠳⢦⣤⠾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠛⠀⠀
-⠀⠀⠀⠀⠀⠈⠳⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠶⠛⠁⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠶⢦⣤⣤⣤⣤⣤⡴⠶⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
-    ]],
     }
 
     dashboard.section.header.val = vim.split(require("core.lua_tools").getRandomValue(logo_list), "\n")
-      -- stylua: ignore
-      dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file",       "<cmd> Telescope find_files <cr>"),
-        dashboard.button("n", " " .. " New file",        "<cmd> ene <BAR> startinsert <cr>"),
-        dashboard.button("r", " " .. " Recent files",    "<cmd> Telescope oldfiles <cr>"),
-        dashboard.button("g", " " .. " Find text",       "<cmd> Telescope live_grep <cr>"),
-        -- dashboard.button("c", " " .. " Config",          "<cmd> lua require('lazyvim.util').telescope.config_files()() <cr>"),
-        dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
-        -- dashboard.button("x", " " .. " Lazy Extras",     "<cmd> LazyExtras <cr>"),
-        -- dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
-        dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
-      }
+    -- stylua: ignore
+    dashboard.section.buttons.val = {
+      dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <cr>"),
+      dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <cr>"),
+      dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <cr>"),
+      dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <cr>"),
+      -- dashboard.button("c", " " .. " Config",          "<cmd> lua require('lazyvim.util').telescope.config_files()() <cr>"),
+      dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
+      -- dashboard.button("x", " " .. " Lazy Extras",     "<cmd> LazyExtras <cr>"),
+      -- dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
+      dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
+    }
     for _, button in ipairs(dashboard.section.buttons.val) do
       button.opts.hl = "AlphaButtons"
       button.opts.hl_shortcut = "AlphaShortcut"
@@ -222,12 +171,12 @@ Attempts Remaining: █ █ █ █
         local stats = require("lazy").stats()
         local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
         dashboard.section.footer.val = "⚡ Neovim loaded "
-          .. stats.loaded
-          .. "/"
-          .. stats.count
-          .. " plugins in "
-          .. ms
-          .. "ms"
+            .. stats.loaded
+            .. "/"
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
         pcall(vim.cmd.AlphaRedraw)
       end,
     })

@@ -110,6 +110,7 @@ M.vim = function()
 
   -- Toggle
   vim.keymap.set("n", "<leader>tr", ":set relativenumber!<cr>", { desc = "Toggle Relative Number" })
+  vim.keymap.set("n", "<leader>tw", ":set wrap!<cr>", { desc = "Toggle Word Wrap" })
 
   -- Search
   vim.keymap.set("n", "*", "*``", { desc = "Search" })

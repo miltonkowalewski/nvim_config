@@ -99,7 +99,7 @@ return {
     { "<leader>dw", function() require("dap.ui.widgets").hover() end,              desc = "Widgets" },
     -- Shorcuts
     { "<F5>t",      function() require("dap").terminate() end,                     desc = "Terminate" },
-    { "<F6>",       function() require("dap").continue() end,                      desc = "Continue" },
+    { "<F7>",       function() require("dap").continue() end,                      desc = "Continue" },
     { "<F8>i",      function() require("dap").step_into() end,                     desc = "Step Into" },
     { "<F8>o",      function() require("dap").step_out() end,                      desc = "Step Out" },
     { "<F8>x",      function() require("dap").step_over() end,                     desc = "Step Over" },

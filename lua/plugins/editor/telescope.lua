@@ -19,12 +19,12 @@ return {
       },
     },
     keys = {
-      { "<leader>fc", mode = { "n", "v" }, "<cmd>Telescope git_branches<cr>", desc = "Find Checkout Branch" },
-      { "<leader>fz", mode = { "n", "v" }, "<cmd>Telescope colorscheme<cr>", desc = "Find colorscheme" },
-      { "<leader>fs", mode = { "n", "v" }, "<cmd>Telescope search_history<cr>", desc = "Find Search History" },
+      { "<leader>fc", mode = { "n", "v" }, "<cmd>Telescope git_branches<cr>",           desc = "Find Checkout Branch" },
+      { "<leader>fz", mode = { "n", "v" }, "<cmd>Telescope colorscheme<cr>",            desc = "Find colorscheme" },
+      { "<leader>fs", mode = { "n", "v" }, "<cmd>Telescope search_history<cr>",         desc = "Find Search History" },
       { "<leader>ff", mode = { "n", "v" }, "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
-      { "<leader>fh", mode = { "n", "v" }, "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
-      { "<leader>fd", mode = { "n", "v" }, "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics" },
+      { "<leader>fh", mode = { "n", "v" }, "<cmd>Telescope help_tags<cr>",              desc = "Find Help" },
+      { "<leader>fd", mode = { "n", "v" }, "<cmd>Telescope diagnostics<cr>",            desc = "Find Diagnostics" },
       {
         "<leader>fr",
         mode = { "n", "v" },
@@ -44,15 +44,16 @@ return {
         "<cmd>:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         desc = "Find by Grep",
       },
-      { "<leader>fM", mode = { "n", "v" }, "<cmd>Telescope man_pages<cr>", desc = "Find Man Pages" },
-      { "<leader>fk", mode = { "n", "v" }, "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
-      { "<leader>fp", mode = { "n", "v" }, "<cmd>Telescope projects<cr>", desc = "Find Projects" },
+      { "<leader>fM", mode = { "n", "v" },        "<cmd>Telescope man_pages<cr>", desc = "Find Man Pages" },
+      { "<leader>fk", mode = { "n", "v" },        "<cmd>Telescope keymaps<cr>",   desc = "Find Keymaps" },
+      { "<leader>fp", mode = { "n", "v" },        "<cmd>Telescope projects<cr>",  desc = "Find Projects" },
       {
         "<C-f>",
         mode = { "n", "v" },
         function()
           local current_word = vim.fn.expand("<cword>")
           require("telescope.builtin").current_buffer_fuzzy_find({
+            word_match = "-w",
             use_regex = true,
             default_text = current_word,
             ctags_file = "./tags",
@@ -103,10 +104,10 @@ return {
           },
           extensions = {
             fzf = {
-              fuzzy = true, -- false will only do exact matching
+              fuzzy = true,                   -- false will only do exact matching
               override_generic_sorter = true, -- override the generic sorter
-              override_file_sorter = true, -- override the file sorter
-              case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+              override_file_sorter = true,    -- override the file sorter
+              case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
               -- the default case_mode is "smart_case"
             },
             live_grep_args = {

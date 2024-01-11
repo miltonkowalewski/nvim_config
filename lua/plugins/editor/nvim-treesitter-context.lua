@@ -1,9 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
+  event = { "BufRead", "BufWinEnter", "BufNewFile" },
   dependencies = {
     "neovim/nvim-lspconfig",
   },
   keys = {
-    { "<leader>tc", ":TSContextToggle<cr>", desc = "Toggle context of virtual text" },
+    { "<leader>tt", ":TSContextToggle<cr>", desc = "Toggle HEAD context" },
   }
 }
