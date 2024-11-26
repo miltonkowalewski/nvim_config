@@ -1,35 +1,33 @@
 return {
   {
     "folke/which-key.nvim",
+    dependencies = { "echasnovski/mini.icons", },
     event = "VeryLazy",
     opts = {
       plugins = { spelling = true },
-      defaults = {
+      spec = {
         mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["gs"] = { name = "+surround" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader><tab>"] = { name = "+tabs" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>f"] = { name = "+file/find" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
-        ["<leader>l"] = { name = "+lsp" },
-        ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>t"] = { name = "+toggle" },
-        ["<leader>u"] = { name = "+ui" },
-        ["<leader>un"] = { name = "+noice" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
+        { "<leader>n",     group = "note",                desc = "+Note" },
+        { "<leader>d",     group = "debug",                desc = "+Debug" },
+        { "g",             group = "g",                    desc = "+G" },
+        { "]",             group = "next",                 desc = "+Next" },
+        { "[",             group = "prev",                 desc = "+Prev" },
+        { "<leader><tab>", group = "tabs",                 desc = "+Tabs" },
+        { "<leader>b",     group = "buffer",               desc = "+Buffer" },
+        { "<leader>c",     group = "code",                 desc = "+Code" },
+        { "<leader>f",     group = "file/find",            desc = "+File/Find" },
+        { "<leader>g",     group = "git",                  desc = "+Git" },
+        { "<leader>gh",    group = "hunks",                desc = "+Hunks" },
+        { "<leader>p",     group = "python",         desc = "+Python" },
+        { "<leader>pv",     group = "venv",                desc = "+Virtual Environment" },
+        { "<leader>q",     group = "quit/session",         desc = "+Quit/Session" },
+        { "<leader>s",     group = "search",               desc = "+Search" },
+        { "<leader>t",     group = "toggle",               desc = "+Toggle" },
+        { "<leader>u",     group = "ui",                   desc = "+Ui" },
+        { "<leader>un",    group = "noice",                desc = "+Noice" },
+        { "<leader>w",     group = "windows",              desc = "+Windows" },
+        { "<leader>x",     group = "diagnostics/quickfix", desc = "+Diagnostics/Quickfix" },
       },
     },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
-    end,
   },
 }

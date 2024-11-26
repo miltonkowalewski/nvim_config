@@ -1,36 +1,39 @@
-local config_mason = require("plugins.config.plugin-manager.mason_config")
 return {
-  {
     "williamboman/mason.nvim",
     dependencies = {
-      "neovim/nvim-lspconfig"
+        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
-    cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shfmt",
-        "black",
-        "debugpy",
-        "mypy",
-        "ruff",
-        "ruff-lsp",
-        "pyright",
-        "markdownlint",
-        "marksman",
-        "cmakelang",
-        "cmakelint",
-        "hadolint",
-        "docker-compose-language-service",
-        "dockerfile-language-server",
-        "bash-language-server"
-      },
-    },
-    config = function(_, opts)
-      require("mason").setup(opts)
-      config_mason.registry(opts.ensure_installed)
+    config = function()
+        require("mason").setup()
+
+        require("mason-lspconfig").setup({
+            automatic_installation = true,
+            ensure_installed = {
+                "cssls",
+                "eslint",
+                "html",
+                "jsonls",
+                "pyright",
+                "tailwindcss",
+                "ruff_lsp",
+                "lua_ls",
+                "marksman",
+                "dockerls",
+                "bashls",
+            },
+        })
+
+        require("mason-tool-installer").setup({
+            ensure_installed = {
+                "prettier",
+                "stylua", -- lua formatter
+                "isort", -- python formatter
+                "black", -- python formatter
+                "pylint",
+                "eslint_d",
+            },
+        })
     end,
-  },
 }

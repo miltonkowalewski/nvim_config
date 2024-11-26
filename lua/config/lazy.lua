@@ -28,16 +28,16 @@ WORK_ENVIRONMENT = is_work_environment()
 local plugins_tools = require("plugins.config.tools")
 plugins_tools.lazy_file()
 
-colorscheme_list = { "vscode", "gruvbox", "kanagawa", "tokyonight", "solarized-osaka", "fluoromachine" }
+local colorscheme_list = { "kanagawa", "fluoromachine" }
 
 local colorscheme = require("core.lua_tools").getRandomValue(colorscheme_list)
 require("lazy").setup({
   spec = {
     -- coding
-    { import = "plugins.coding.codeium" },
+    -- { import = "plugins.coding.codeium" },
     { import = "plugins.coding.comment" },
-    { import = "plugins.coding.luasnip" },
-    { import = "plugins.coding.nvim-cmp" },
+    -- { import = "plugins.coding.luasnip" },
+    -- { import = "plugins.coding.nvim-cmp" },
     -- dap
     { import = "plugins.dap.nvim-dap" },
     -- { import = "plugins.dap.nvim-dap-virtual-text" },
@@ -46,38 +46,41 @@ require("lazy").setup({
     { import = "plugins.colorscheme." .. colorscheme },
     -- editor
     { import = "plugins.editor.markdown-preview" },
-    { import = "plugins.editor.nvim-hl-mdcodeblock" },
     { import = "plugins.editor.neo-tree" },
     { import = "plugins.editor.telescope" },
     { import = "plugins.editor.flash" },
     { import = "plugins.editor.nvim_context_vt" },
     { import = "plugins.editor.which-key" },
     { import = "plugins.editor.gitsigns" },
+    -- { import = "plugins.editor.true-zem" },
     { import = "plugins.editor.vim-illuminate" },
     { import = "plugins.editor.trouble" },
     { import = "plugins.editor.todo-comments" },
     { import = "plugins.editor.semshi" },
     { import = "plugins.editor.nvim-treesitter" },
-    { import = "plugins.editor.headlines" },
-    { import = "plugins.editor.zem" },
     { import = "plugins.editor.persistence" },
+    { import = "plugins.editor.project" },
+    { import = "plugins.editor.quicknote" },
     { import = "plugins.editor.nvim-treesitter-context" },
     { import = "plugins.editor.nvim-window-picker" },
     { import = "plugins.editor.aerial" },
     { import = "plugins.editor.winshift" },
     -- formatting
     { import = "plugins.formatting.format-on-save" },
+    -- language
+    { import = "plugins.language.python" },
     -- lsp
     { import = "plugins.lsp.goto-preview" },
     { import = "plugins.lsp.nvim-lspconfig" },
     -- plugin_manager
-    { import = "plugins.plugin-manager.mason" },
+    -- { import = "plugins.plugin-manager.mason" },
     -- ui
     { import = "plugins.ui.alpha-nvim" },
     { import = "plugins.ui.lualine" },
     { import = "plugins.ui.nvim-bqf" },
     { import = "plugins.ui.incline" },
     { import = "plugins.ui.noice" },
+    { import = "plugins.ui.nvim-notify" },
   },
   defaults = {
     lazy = false,

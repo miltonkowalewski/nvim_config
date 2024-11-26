@@ -8,8 +8,7 @@ return {
       "nvim-lua/plenary.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        enabled = vim.fn.executable("make") == 1,
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
       },
       {
         "nvim-telescope/telescope-live-grep-args.nvim",
@@ -19,12 +18,12 @@ return {
       },
     },
     keys = {
+      { "<leader>fm", mode = { "n", "v" }, "<cmd>Telescope notify<cr>",                 desc = "Find Notification" },
       { "<leader>fc", mode = { "n", "v" }, "<cmd>Telescope git_branches<cr>",           desc = "Find Checkout Branch" },
       { "<leader>fz", mode = { "n", "v" }, "<cmd>Telescope colorscheme<cr>",            desc = "Find colorscheme" },
-      { "<leader>fs", mode = { "n", "v" }, "<cmd>Telescope search_history<cr>",         desc = "Find Search History" },
-      { "<leader>ff", mode = { "n", "v" }, "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Files" },
-      { "<leader>fh", mode = { "n", "v" }, "<cmd>Telescope help_tags<cr>",              desc = "Find Help" },
-      { "<leader>fd", mode = { "n", "v" }, "<cmd>Telescope diagnostics<cr>",            desc = "Find Diagnostics" },
+      { "<leader>fs", mode = { "n", "v" }, "<cmd>Telescope search_history<cr>",         desc = "Find Search Command History" },
+      { "<leader>ff", mode = { "n", "v" }, "<cmd>Telescope find_files<cr>",             desc = "Find Files" },
+      { "<leader>fh", mode = { "n", "v" }, "<cmd>Telescope find_files hidden=true<cr>", desc = "Find Dot Files" },
       {
         "<leader>fr",
         mode = { "n", "v" },
@@ -44,28 +43,32 @@ return {
         "<cmd>:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         desc = "Find by Grep",
       },
-      { "<leader>fM", mode = { "n", "v" },        "<cmd>Telescope man_pages<cr>", desc = "Find Man Pages" },
-      { "<leader>fk", mode = { "n", "v" },        "<cmd>Telescope keymaps<cr>",   desc = "Find Keymaps" },
-      { "<leader>fp", mode = { "n", "v" },        "<cmd>Telescope projects<cr>",  desc = "Find Projects" },
+      { "<leader>fp", mode = { "n", "v" },        "<cmd>:lua require('telescope').extensions.projects.projects()<CR>", desc = "Find Project" },
+      { "<leader>fM", mode = { "n", "v" },        "<cmd>Telescope man_pages<cr>",                                      desc = "Find Man Pages" },
+      { "<leader>fk", mode = { "n", "v" },        "<cmd>Telescope keymaps<cr>",                                        desc = "Find Keymaps" },
       {
         "<C-f>",
         mode = { "n", "v" },
         function()
           local current_word = vim.fn.expand("<cword>")
-          require("telescope.builtin").current_buffer_fuzzy_find({
-            word_match = "-w",
-            use_regex = true,
-            default_text = current_word,
-            ctags_file = "./tags",
-            sorting_strategy = "ascending",
-          })
+          require("telescope-live-grep-args.shortcuts").grep_word_under_cursor_current_buffer(
+            require('telescope.themes').get_ivy(
+              { quote = true, trim = true }
+            )
+          )
         end,
         desc = "Find in File",
       },
       {
         "<C-g>",
         mode = { "n" },
-        function() require("telescope-live-grep-args.shortcuts").grep_word_under_cursor({ quote = true, trim = true }) end,
+        function()
+          require("telescope-live-grep-args.shortcuts").grep_word_under_cursor(
+            require('telescope.themes').get_ivy(
+              { quote = true, trim = true }
+            )
+          )
+        end,
         desc = "Find in Project (normal)",
       },
       {
@@ -79,9 +82,13 @@ return {
       local actions = require("telescope.actions")
       local telescope_opts = {
         defaults = {
+          set_env = { ['COLORTERM'] = 'truecolor' },
+          border = true,
+          borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+          color_devicons = true,
           prompt_prefix = " ",
           selection_caret = " ",
-          file_ignore_patterns = { "node_modules", "\\.venv", "\\.git/" }, -- regex type
+          file_ignore_patterns = { "node_modules", ".venv", ".git/", "__pycache__" }, -- regex type
           -- open files in the first window that is an actual file.
           -- use the current window if no other window is available.
           get_selection_window = function()
@@ -147,6 +154,7 @@ return {
     config = function(_, opts)
       require("telescope").load_extension("live_grep_args")
       require("telescope").load_extension("fzf")
+      require('telescope').load_extension('projects')
       require("telescope").setup(opts)
     end,
   },

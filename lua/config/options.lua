@@ -9,7 +9,7 @@ local function file_exists(path)
 end
 
 -- Define the paths
-local custom_python_path = "~/venvs/neovim/bin/python"
+local custom_python_path = "~/venvs/neovim/bin/python3"
 local default_python_path = "~/.pyenv/shims/python3"
 
 -- Check if the custom path exists, if not, set to default

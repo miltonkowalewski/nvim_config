@@ -24,6 +24,8 @@ M.vim = function()
   vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
   vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
   vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+  vim.keymap.set("n", "<leader>8", "<cmd>vertical resize 80<cr>", { desc = "Window v resize 80" })
+  vim.keymap.set("n", "<leader>1", "<cmd>vertical resize 120<cr>", { desc = "Window v resize 120" })
 
   -- Move Lines
   vim.keymap.set("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -81,7 +83,7 @@ M.vim = function()
   vim.keymap.set({ "n", "v" }, "<tab>", ">gv")
 
   -- New file
-  vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+  vim.keymap.set("n", "<C-n>", "<cmd>enew<cr>", { desc = "New File" })
 
   -- Quit
   vim.keymap.set("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit (:q)" })
@@ -92,10 +94,11 @@ M.vim = function()
   -- Windows
   vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
   vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-  vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-  vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+  -- vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+  -- vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
   vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
   vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+  vim.keymap.set("n", "<leader>=", "<C-W>=", { desc = "Equalize all windows" })
 
   -- Tabs
   vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })

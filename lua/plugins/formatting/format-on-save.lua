@@ -20,6 +20,7 @@ return {
       exclude_path_patterns = {
         "/node_modules/",
         "/.venv/",
+        ".local/share/nvim/lazy",
       },
       formatter_by_ft = {
         css = formatters.lsp,

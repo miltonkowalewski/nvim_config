@@ -17,7 +17,7 @@ return {
       themes = {
         "plugins.config.lualine.default",
         "plugins.config.lualine.eviline",
-        "plugins.config.lualine.bubbles",
+        -- "plugins.config.lualine.bubbles",
         "plugins.config.lualine.slanted",
       }
       require(require("core.lua_tools").getRandomValue(themes))
